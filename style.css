@@ -1,0 +1,226 @@
+/*Reset do Document*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: #ffffff;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.1);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.2);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --border-img-1: #8d8d8d;
+  --border-img-2: #5d2c6f;
+  --border-img-3: #ce2fb9;
+
+  --switch-br-url: url(./assets/moon-stars.svg);
+}
+
+/*Variaveis para o tema dark*/
+.light {
+  --text-color: #000000;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.05);
+  --surface-color: rgba(0, 0, 0, 0.2);
+  --surface-color-hover: rgba(0, 0, 0, 0.1);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --border-img-1: rgb(42, 201, 253);
+  --border-img-2: rgb(121, 108, 254);
+  --border-img-3: rgb(176, 41, 255);
+  --switch-br-url: url(./assets/sun.svg);
+}
+
+body {
+  background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh; 
+}
+
+/*Style Overflow*/
+body::-webkit-scrollbar {
+  width: 15px;
+}
+body::-webkit-scrollbar-track {
+  background: rgba(23, 22, 24, 0.7);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(145, 96, 209, 0.6);   
+  border-radius: 50px;
+  border: 0;
+}
+.light body::-webkit-scrollbar-track {
+ background: rgba(194,164,234,0.9);
+}
+.light body::-webkit-scrollbar-thumb {
+  background-color: rgba(232, 237, 245, 0.9);    
+}
+
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 100%;
+  max-width: 588px;
+  margin: 50px auto 0px;
+  padding: 0 24px;
+}
+
+/*Profile*/
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+#profile img {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+}
+#profile .borderRadius {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  z-index: -1;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    to top right,
+    var(--border-img-1) 0%,
+    var(--border-img-2) 50%,
+    var(--border-img-3) 100%
+  );
+}
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+}
+.light #profile .borderRadius {
+  box-shadow: 2px 2px 8px #2C2C2C7C;
+}
+
+/*Switch*/
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: #fff var(--switch-br-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  animation: slice-out 0.4s;
+}
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+.light #switch button {
+  animation: slice-in 0.4s forwards;
+}
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 9999px;
+}
+
+/* Links */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0px;
+}
+ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: var(--stroke-color);
+  border: 1px solid var(--surface-color);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.2s;
+}
+ul li a:hover {
+  background-color: var(--surface-color-hover);
+  border: 1px solid var(--text-color);
+}
+
+/*Social Links*/
+#social-links {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0px;
+  font-size: 24px;
+}
+#social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  transition: background 0.3s;
+  border-radius: 50%;
+}
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  text-align: center;
+  padding: 24px 0px;
+  font-size: 14px;
+  color: var(--text-color);
+
+}
+
+/*Media Query */
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url("./assets/bg-desktop.jpg");
+  }
+
+  .light {
+    --bg-url: url("./assets/bg-desktop-light.jpg");
+  }
+}
+
+/*Animação com CSS*/
+@keyframes slice-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slice-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
